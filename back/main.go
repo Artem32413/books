@@ -87,7 +87,7 @@ func ginE() {
 	router.GET("/books/:id", getBookByID)
 	router.GET("/books/:id/deleted", deleteById)
 	router.POST("/books", postBook)
-	router.Run("localhost:8080")
+	router.Run("https://artem32413.github.io/books/")
 }
 
 func main() {
