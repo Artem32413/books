@@ -60,7 +60,7 @@ func deleteById(c *gin.Context) {
 func ginE() {
 	router := gin.Default()
 	router.LoadHTMLFiles(
-		"./main/index.html",
+		"./index.html",
 		"./navigation/book/book.html",
 		"./navigation/profile/profile.html",
 		"./navigation/contacts/contacts.html",
