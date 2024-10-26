@@ -7,6 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type user struct{
+	name string `name: "name" binding: "required"`
+	email string `form: "email" binding: "required, email"`
+	password string `form: "password" binding: "required, password"`
+}
+
 type book struct {
 	ID     string `json:"id"`
 	Title  string `json:"title"`
@@ -21,6 +27,18 @@ var books = []book{
 }
 
 var tmpl *template.Template
+
+func postHtml(c *gin.Context){
+	c.HTML(http.StatusOK ,"enterReg.html", nil)
+}
+
+func heandleForm(c *gin.Context){
+	var data user 
+	if err := c.ShouldBind(&data); err != nil{
+		c.HTML(http.StatusBadRequest, "enterReg.html", gin.H{"error": err.Error()} )
+	return}
+	c.HTML(http.StatusOK ,"enterReg.html", gin.H{"name": data.name, "email": data.email, "password": data.password})
+}
 
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, books)
@@ -87,7 +105,7 @@ func ginE() {
 	router.GET("/books/:id", getBookByID)
 	router.GET("/books/:id/deleted", deleteById)
 	router.POST("/books", postBook)
-	router.Run("https://artem32413.github.io/books/")
+	router.Run("localhost:8080")
 }
 
 func main() {

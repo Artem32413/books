@@ -1,5 +1,5 @@
 <html lang="ru">
-<link rel="stylesheet" href="./styles/style.css">
+<link rel="stylesheet" href="/styles/style.css">
 
 <body>
 
@@ -21,10 +21,14 @@
         <section id="contact-form">
             <h2>Регистрация/Вход</h2>
             <form>
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="email" placeholder="Ваш email" required>
-                <input type="password" placeholder="Ваш пароль" required>
-                <input type="password" placeholder="Подтвердите ваш пароль" required>
+                <input type="text" placeholder="Ваше имя " name="name" required>
+                <p>{{ .name }}</p>
+                <input type="email" placeholder="Ваш email " name="email" required>
+                <p>{{ .email }}</p>
+                <input type="password" placeholder="Ваш пароль " name="password" required>
+                <p>{{ .password }}</p>
+                <input type="password" placeholder="Подтвердите ваш пароль" name="password" required>
+                <p>{{ .password }}</p>
                 <button type="submit">Регистрация</button>
             </form>
         </section>
